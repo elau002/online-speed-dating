@@ -33,7 +33,7 @@ var profile = {
       this.$http.get('/api/user', {params: {username: '2'}})
       .then((res) => {
         if (!res.body.name) {
-          console.log(this.username)
+          console.log(this.username);
         }
       })
       .catch((err) => console.error(err));
