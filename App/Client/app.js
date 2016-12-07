@@ -5,7 +5,7 @@ import AppTEST from './appController.js';
 import signin from './Views/signinController.js';
 import video from './Views/videoController.js';
 import signup from './Views/signupController.js';
-
+import profile from './Views/profileController.js';
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
@@ -26,6 +26,10 @@ var routes = [
   {
     path: '/signup',
     component: signup
+  },
+  {
+    path: '/profile',
+    component: profile
   }
 ];
 
