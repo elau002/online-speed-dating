@@ -12456,10 +12456,11 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var profile = {
+	  name: 'profile',
 	  template: _profileTemplate2.default.template,
+	  props: { 'username': { type: String } },
 	  data: function data() {
 	    return {
-	      username: '',
 	      name: '',
 	      age: '',
 	      location: ''
@@ -12468,7 +12469,6 @@
 	  methods: {
 	    setUserInfo: function setUserInfo() {
 	      var body = {
-	        username: this.username,
 	        name: this.username,
 	        age: this.username,
 	        location: this.location
@@ -12476,16 +12476,17 @@
 	      this.$http.post('/api/user', body).then(function (response) {}).catch(function (err) {});
 	    },
 	    loadUserProfile: function loadUserProfile() {
-	      console.log('before page loaded ');
-	      this.$http.get('/api/user', { params: { username: this.username } }).then(function (res) {
-	        console.log(res);
+	      console.log('before page loaded ', this.props);
+	      this.$http.get('/api/user', { params: { username: '2' } }).then(function (res) {
+	        if (!res.body.name) {
+	          console.log('hello');
+	        }
 	      }).catch(function (err) {
 	        return console.error(err);
 	      });
-	      this.username = 'hello';
 	    }
 	  },
-	  created: function created() {
+	  mounted: function mounted() {
 	    this.loadUserProfile();
 	  }
 	};
@@ -12517,7 +12518,7 @@
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\t<div>\n\t\tboop\n\t</div>\n";
+	module.exports = "\n\t<div>\n\t\t<span>{{username}}</span>\n\t\tboop\n\t</div>\n";
 
 /***/ },
 /* 20 */,
