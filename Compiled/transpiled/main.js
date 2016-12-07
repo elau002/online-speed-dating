@@ -96,7 +96,8 @@
 	  component: _signupController2.default
 	}, {
 	  path: '/profile',
-	  component: _profileController2.default
+	  component: _profileController2.default,
+	  name: 'profile'
 	}];
 
 	var router = new _vueRouter2.default({
@@ -12458,7 +12459,9 @@
 	var profile = {
 	  name: 'profile',
 	  template: _profileTemplate2.default.template,
-	  props: { 'username': { type: String } },
+	  props: {
+	    username: String
+	  },
 	  data: function data() {
 	    return {
 	      name: '',
@@ -12469,17 +12472,19 @@
 	  methods: {
 	    setUserInfo: function setUserInfo() {
 	      var body = {
-	        name: this.username,
-	        age: this.username,
+	        name: this.name,
+	        age: this.age,
 	        location: this.location
 	      };
 	      this.$http.post('/api/user', body).then(function (response) {}).catch(function (err) {});
 	    },
 	    loadUserProfile: function loadUserProfile() {
+	      var _this = this;
+
 	      console.log('before page loaded ', this.props);
 	      this.$http.get('/api/user', { params: { username: '2' } }).then(function (res) {
 	        if (!res.body.name) {
-	          console.log('hello');
+	          console.log(_this.username);
 	        }
 	      }).catch(function (err) {
 	        return console.error(err);
@@ -12518,7 +12523,7 @@
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\t<div>\n\t\t<span>{{username}}</span>\n\t\tboop\n\t</div>\n";
+	module.exports = "\n\n\t<div>\n{{username}}\nboop\n\t<div>\n</template>";
 
 /***/ },
 /* 20 */,

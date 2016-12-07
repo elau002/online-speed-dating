@@ -18,7 +18,7 @@ var routes = [
     component: AppTEST
   },  
   {
-    path: '/video',
+  path: '/video',
     component: video
   },
   {
@@ -27,7 +27,8 @@ var routes = [
   },
   {
     path: '/profile',
-    component: profile
+    component: profile,
+    name: 'profile'
   }
 ];
 
