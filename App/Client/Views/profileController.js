@@ -28,7 +28,7 @@ var profile = {
     },
     loadUserProfile: function() {
       console.log('before page loaded ');
-      this.$http.get('/api/user', {params: {username: this.username}})
+      this.$http.get('/api/user', {params: {username: '2'}})
       .then((res) => {
         console.log(res);
 
