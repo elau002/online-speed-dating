@@ -3,11 +3,9 @@ import temp from './profileTemplate.vue';
 var profile = {
   name: 'profile',
   template: temp.template,
-  props: {
-    username: String
-  },
   data: function() {
     return {
+      username: this.$route.params.id,
       name: '',
       age: '',
       location: ''
