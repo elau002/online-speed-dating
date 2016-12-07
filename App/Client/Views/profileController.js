@@ -29,8 +29,8 @@ var profile = {
       });
     },
     loadUserProfile: function() {
-      console.log('before page loaded ', this.props);
-      this.$http.get('/api/user', {params: {username: '2'}})
+      console.log('before page loaded ', this.$route.params.id);
+      this.$http.get('/api/user', {params: {username: this.$route.params.id }})
       .then((res) => {
         if (!res.body.name) {
           console.log(this.username);
@@ -39,7 +39,8 @@ var profile = {
       .catch((err) => console.error(err));
     }	
   },
-  mounted: function() {
+  created: function() {
+    console.log(this.$route.params.id);
     this.loadUserProfile();
   }
 };

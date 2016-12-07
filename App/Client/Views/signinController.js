@@ -15,7 +15,7 @@ const Login = {
     //   this.$dispatch('signin-user', this.username);
     // },  
     login: function() {
-      // this.notify();
+
       this.$http.get('/api/user', {
         params: {
           username: this.username,
@@ -23,8 +23,7 @@ const Login = {
         }, 
       })
       .then((res) => { 
-        console.log(this.username);
-        this.$router.push('/profile');
+        this.$router.push('/profile/' + res.body.username);
       })
       .catch((err) => console.error(err));
     }

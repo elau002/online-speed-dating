@@ -1,7 +1,7 @@
 <template>
 
 	<div>
-{{username}}
-boop
+		{{$route.params.id}}
+		boop
 	<div>
 </template>
