@@ -3,7 +3,9 @@ import temp from './profileTemplate.vue';
 var profile = {
   name: 'profile',
   template: temp.template,
-  props: {'username': {type: String}},
+  props: {
+    username: String
+  },
   data: function() {
     return {
       name: '',
@@ -14,8 +16,8 @@ var profile = {
   methods: {
     setUserInfo: function() {
       var body = {
-        name: this.username,
-        age: this.username,
+        name: this.name,
+        age: this.age,
         location: this.location
       };
       this.$http.post('/api/user', body)
@@ -30,8 +32,8 @@ var profile = {
       console.log('before page loaded ', this.props);
       this.$http.get('/api/user', {params: {username: '2'}})
       .then((res) => {
-        if(!res.body.name){
-          console.log('hello')
+        if (!res.body.name) {
+          console.log(this.username)
         }
       })
       .catch((err) => console.error(err));

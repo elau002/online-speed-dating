@@ -17,7 +17,8 @@ var routes = [
   },  
   {
     path: '/signin',
-    component: signin
+    component: signin,
+    name: 'signin'
   },
   {
     path: '/video',
@@ -29,7 +30,8 @@ var routes = [
   },
   {
     path: '/profile',
-    component: profile
+    component: profile,
+    name: 'profile'
   }
 ];
 

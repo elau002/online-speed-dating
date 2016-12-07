@@ -1,6 +1,7 @@
 <template>
+
 	<div>
-		<span>{{username}}</span>
-		boop
-	</div>
+{{username}}
+boop
+	<div>
 </template>
