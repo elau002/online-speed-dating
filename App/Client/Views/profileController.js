@@ -1,10 +1,11 @@
 import temp from './profileTemplate.vue';
 
 var profile = {
+  name: 'profile',
   template: temp.template,
+  props: {'username': {type: String}},
   data: function() {
     return {
-      username: '',
       name: '',
       age: '',
       location: ''
@@ -13,7 +14,6 @@ var profile = {
   methods: {
     setUserInfo: function() {
       var body = {
-        username: this.username,
         name: this.username,
         age: this.username,
         location: this.location
@@ -27,17 +27,17 @@ var profile = {
       });
     },
     loadUserProfile: function() {
-      console.log('before page loaded ');
+      console.log('before page loaded ', this.props);
       this.$http.get('/api/user', {params: {username: '2'}})
       .then((res) => {
-        console.log(res);
-
+        if(!res.body.name){
+          console.log('hello')
+        }
       })
       .catch((err) => console.error(err));
-      this.username = 'hello';
     }	
   },
-  created: function() {
+  mounted: function() {
     this.loadUserProfile();
   }
 };
