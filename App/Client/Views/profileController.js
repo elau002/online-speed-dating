@@ -30,8 +30,7 @@ var profile = {
       console.log('before page loaded ', this.$route.params.id);
       this.$http.get('/api/user', {params: {username: this.$route.params.id }})
       .then((res) => {
-        if (!res.body.name) {
-          console.log(this.username);
+          console.log(res);
         }
       })
       .catch((err) => console.error(err));
