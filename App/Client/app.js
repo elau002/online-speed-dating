@@ -1,59 +1,18 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource'; 
+import Vuex from 'vuex';
 import AppTEST from './appController.js';
 import login from './Views/loginController.js';
 import video from './Views/videoController.js';
 import signup from './Views/signupController.js';
-import Vuex from 'vuex';
 import profile from './Views/profileController.js';
 import profileCreate from './Views/profileCreationController.js';
+import store from './store.js';
 import Vuex from 'vuex';
 Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(Vuex);
-
-var store = new Vuex.Store({
-  state: {
-    username: ''
-  },
-  getters: {
-    isUsername(state) {
-      return state.username;
-    }
-  },
-  mutation: {
-    set_Name (state, name) {
-      state.username = name;
-    }
-  },
-  action: {
-    setName ({commit}, name) {
-      commit(set_Name, name);
-    }
-  }
-});
-
-var store = new Vuex.Store({
-  state: {
-    username: ''
-  },
-  getters: {
-    isUsername(state) {
-      return state.username;
-    }
-  },
-  mutation: {
-    set_Name (state, name) {
-      state.username = name;
-    }
-  },
-  action: {
-    setName ({commit}, name) {
-      commit(set_Name, name);
-    }
-  }
-});
 
 Vue.component('login', login);
 
@@ -72,7 +31,7 @@ var routes = [
     component: signup
   },
   {
-    path: '/profile/:id',
+    path: '/profile',
     component: profile,
     name: 'profile'
   },
@@ -85,13 +44,14 @@ var routes = [
 
 
 const router = new VueRouter({
+
   routes
 });
 
 
 
 const app = new Vue({
-  router,
-  store
+  store,
+  router
 }).$mount('.app');
 

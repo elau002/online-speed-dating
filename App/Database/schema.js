@@ -9,6 +9,10 @@ var userSchema = mongoose.Schema({
   location: String,
   profileImg: String,
   gender: String
+<<<<<<< HEAD
+=======
+
+>>>>>>> new
 });
  
 exports.userSchema = userSchema;

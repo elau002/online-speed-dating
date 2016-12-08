@@ -1,4 +1,8 @@
 <template>
+<<<<<<< HEAD
+=======
+
+>>>>>>> new
   <div>
     <h1>{{$route.params.id}}</h1>
       <div>
@@ -24,4 +28,8 @@
 	<button v-on:click='update'>Update User Info</button>
 	<!--<div>*Place holder for matchs*</div>-->
   </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> new
 </template>

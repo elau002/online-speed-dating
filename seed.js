@@ -6,9 +6,10 @@ db.collections.users.drop( function() {
 });
 
 
+
 for (var i = 0; i < 5; i++) { 
 
-  user.createUser({username: i, password: i}, function(err) {
+  user.create({username: i, password: i, userinfo: 'a', name: 'b', age: i, location: 'c'}, function(err) {
     if (err) { console.error(err); }
   });
 }
