@@ -32,7 +32,7 @@ var profile = {
       .catch((err) => console.error(err));
     },
     update: function() {
-      this.$router.push( '/' + this.username + '/profile')
+      this.$router.push('/profileCreate/' + this.username)
     }	
   },
   created: function() {

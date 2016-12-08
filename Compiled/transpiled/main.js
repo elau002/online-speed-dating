@@ -80,6 +80,10 @@
 
 	var _profileController2 = _interopRequireDefault(_profileController);
 
+	var _profileCreationController = __webpack_require__(21);
+
+	var _profileCreationController2 = _interopRequireDefault(_profileCreationController);
+
 	var _vuex = __webpack_require__(18);
 
 	var _vuex2 = _interopRequireDefault(_vuex);
@@ -136,7 +140,14 @@
 	  path: '/profile/:id',
 	  component: _profileController2.default,
 	  name: 'profile'
+<<<<<<< HEAD
 >>>>>>> suggestion added in sudo code in profControl
+=======
+	}, {
+	  path: '/profileCreate/:id',
+	  component: _profileCreationController2.default,
+	  name: _profileCreationController2.default
+>>>>>>> working on updating user info in database
 	}];
 
 	var router = new _vueRouter2.default({
@@ -12620,7 +12631,7 @@
 	      });
 	    },
 	    update: function update() {
-	      this.$router.push('/' + this.username + '/profile');
+	      this.$router.push('/profileCreate/' + this.username);
 	    }
 	  },
 	  created: function created() {
@@ -13190,6 +13201,107 @@
 
 	module.exports = "\n  <div>\n    <h1>{{$route.params.id}}</h1>\n      <div>\n        <div>\n          <div class='profileImg' v-html='profileImg'></div>\n        </div>\n\t\t<div>        \n\t\t  <span>Name :{{name}}</span>\n        </div>\n        <div>\n\t      <span>Gender: {{gender}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Age: {{age}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Location: {{location}}</span>\n\t    </div>\n\t\t<div>\n\t      <span>Description: {{userinfo}}</span>\n\t    </div>\n\t</div>\n\t<button v-on:click='update'>Update User Info</button>\n\t<!--<div>*Place holder for matchs*</div>-->\n  </div>\n";
 
+<<<<<<< HEAD
 >>>>>>> suggestion added in sudo code in profControl
+=======
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _profileCreationTemplate = __webpack_require__(22);
+
+	var _profileCreationTemplate2 = _interopRequireDefault(_profileCreationTemplate);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var profileCreation = {
+	  template: _profileCreationTemplate2.default.template,
+	  name: profileCreation,
+	  data: function data() {
+	    return {
+	      username: this.$route.params.id,
+	      name: '',
+	      age: '',
+	      gender: '',
+	      location: '',
+	      profileImg: '',
+	      userinfo: ''
+	    };
+	  },
+	  methods: {
+	    setUserInfo: function setUserInfo() {
+	      var body = {
+	        name: this.name,
+	        age: this.age,
+	        location: this.location,
+	        profileImg: this.profileImg,
+	        gender: this.gender,
+	        userinfo: this.userinfo
+	      };
+	      this.$http.post('/api/user', body).then(function (response) {
+	        console.log(response);
+	      }).catch(function (err) {});
+	    },
+	    loadUserProfile: function loadUserProfile() {
+	      var _this = this;
+
+	      console.log('before page loaded ', this.$route.params.id);
+	      this.$http.get('/api/user', { params: { username: this.$route.params.id } }).then(function (res) {
+	        var user = res.body;
+	        console.log(user);
+	        if (user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo) {
+	          _this.name = user.name;
+	          _this.age = user.age;
+	          _this.location = user.location;
+	          _this.gender = user.gender;
+	          _this.profileImg = user.profileImg;
+	          _this.userinfo = user.userinfo;
+	        }
+	      }).catch(function (err) {
+	        return console.error(err);
+	      });
+	    }
+	  },
+	  created: function created() {
+	    this.loadUserProfile();
+	  }
+	};
+
+	exports.default = profileCreation;
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(23)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/profileCreationTemplate.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "\n  <div>\n    <h1>Profile Update</h1>\n      <div>\n        <form>\n          <div>\n            <input name='name' placeholder='Enter name' type='text' v-model='name'>\n          </div>\n          <div>\n            <input name='age' placeholder='age' type='number' v-model='age'>\n          </div>\n          <div>\n            <input name='gender' placeholder='Gender' type='text' v-model='gender'>\n          </div>\n          <div>\n            <input name='location' placeholder='Where Are You?' type='text' v-model='location'>\n          </div>\n          <div>\n            <input name='profileImg' placeholder='Upload a photo' type='text' v-model='profileImg'>\n          </div>\n          <div>\n            <input name='userinfo' placeholder='Tell Us about yourself' type='text' v-model='userinfo'>\n          </div>       \n        </form> \n\t  <button v-on:click='setUserInfo'>Save User Info</button>\n    </div>\n  </div>\n";
+
+>>>>>>> working on updating user info in database
 /***/ }
 /******/ ]);
