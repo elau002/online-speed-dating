@@ -79,6 +79,29 @@
 	_vue2.default.use(_vueResource2.default);
 	_vue2.default.use(_vueRouter2.default);
 
+	var store = new Vuex.Store({
+	  state: {
+	    username: ''
+	  },
+	  getters: {
+	    isUsername: function isUsername(state) {
+	      return state.username;
+	    }
+	  },
+	  mutation: {
+	    set_Name: function set_Name(state, name) {
+	      state.username = name;
+	    }
+	  },
+	  action: {
+	    setName: function setName(_ref, name) {
+	      var commit = _ref.commit;
+
+	      commit(set_Name, name);
+	    }
+	  }
+	});
+
 	_vue2.default.component('login', _loginController2.default);
 
 	var routes = [{
@@ -12188,7 +12211,6 @@
 	        username: this.username,
 	        password: this.password
 	      }).then(function (res) {
-	        console.log(res);
 	        _this.$router.push('/profile/' + res.body.username);
 	      }).catch(function (err) {
 	        return console.error(err);

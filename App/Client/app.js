@@ -9,8 +9,6 @@ import signup from './Views/signupController.js';
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
-<<<<<<< HEAD
-=======
 var store = new Vuex.Store({
   state: {
     username: ''
@@ -32,7 +30,6 @@ var store = new Vuex.Store({
   }
 });
 
->>>>>>> boop
 Vue.component('login', login);
 
 var routes = [
