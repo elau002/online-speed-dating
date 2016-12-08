@@ -12141,7 +12141,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/appTemp.vue"
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/appTemp.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -12182,12 +12182,14 @@
 
 	  methods: {
 	    login: function login() {
+	      var _this = this;
 
 	      this.$http.post('/auth/login', {
 	        username: this.username,
 	        password: this.password
 	      }).then(function (res) {
 	        console.log(res);
+	        _this.$router.push('/profile/' + res.body.username);
 	      }).catch(function (err) {
 	        return console.error(err);
 	      });
@@ -12211,7 +12213,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/loginTemplate.vue"
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/loginTemplate.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -12415,7 +12417,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/videoTemplate.vue"
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/videoTemplate.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -12487,7 +12489,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/elliottbirch/Desktop/online-speed-dating/App/Client/Views/signupTemplate.vue"
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/signupTemplate.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
