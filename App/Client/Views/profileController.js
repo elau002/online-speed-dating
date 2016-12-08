@@ -1,5 +1,5 @@
 import temp from './profileTemplate.vue';
-
+//considerations profile button in dropdown if user already logged in?
 var profile = {
   name: 'profile',
   template: temp.template,
