@@ -1,5 +1,5 @@
 import temp from './profileTemplate.vue';
-//considerations profile button in dropdown if user already logged in?
+
 var profile = {
   name: 'profile',
   template: temp.template,
@@ -30,6 +30,9 @@ var profile = {
           } 
         })
       .catch((err) => console.error(err));
+    },
+    update: function() {
+      this.$router.push( '/' + this.username + '/profile')
     }	
   },
   created: function() {

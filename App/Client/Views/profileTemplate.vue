@@ -21,6 +21,7 @@
 	      <span>Description: {{userinfo}}</span>
 	    </div>
 	</div>
+	<button v-on:click='update'>Update User Info</button>
 	<!--<div>*Place holder for matchs*</div>-->
   </div>
 </template>
