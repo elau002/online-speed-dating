@@ -12586,7 +12586,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	//considerations profile button in dropdown if user already logged in?
 	var profile = {
 	  name: 'profile',
 	  template: _profileTemplate2.default.template,
@@ -12619,6 +12618,9 @@
 	      }).catch(function (err) {
 	        return console.error(err);
 	      });
+	    },
+	    update: function update() {
+	      this.$router.push('/' + this.username + '/profile');
 	    }
 	  },
 	  created: function created() {
@@ -13186,7 +13188,7 @@
 /* 20 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div>\n    <h1>{{$route.params.id}}</h1>\n      <div>\n        <div>\n          <div class='profileImg' v-html='profileImg'></div>\n        </div>\n\t\t<div>        \n\t\t  <span>Name :{{name}}</span>\n        </div>\n        <div>\n\t      <span>Gender: {{gender}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Age: {{age}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Location: {{location}}</span>\n\t    </div>\n\t\t<div>\n\t      <span>Description: {{userinfo}}</span>\n\t    </div>\n\t</div>\n\t<!--<div>*Place holder for matchs*</div>-->\n  </div>\n";
+	module.exports = "\n  <div>\n    <h1>{{$route.params.id}}</h1>\n      <div>\n        <div>\n          <div class='profileImg' v-html='profileImg'></div>\n        </div>\n\t\t<div>        \n\t\t  <span>Name :{{name}}</span>\n        </div>\n        <div>\n\t      <span>Gender: {{gender}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Age: {{age}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Location: {{location}}</span>\n\t    </div>\n\t\t<div>\n\t      <span>Description: {{userinfo}}</span>\n\t    </div>\n\t</div>\n\t<button v-on:click='update'>Update User Info</button>\n\t<!--<div>*Place holder for matchs*</div>-->\n  </div>\n";
 
 >>>>>>> suggestion added in sudo code in profControl
 /***/ }
