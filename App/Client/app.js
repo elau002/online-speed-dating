@@ -9,7 +9,11 @@ import signup from './Views/signupController.js';
 import profile from './Views/profileController.js';
 import profileCreate from './Views/profileCreationController.js';
 import store from './store.js';
+<<<<<<< HEAD
 import Vuex from 'vuex';
+=======
+
+>>>>>>> new
 Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(Vuex);
