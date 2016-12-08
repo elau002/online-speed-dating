@@ -74,14 +74,60 @@
 
 	var _signupController2 = _interopRequireDefault(_signupController);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> working
 	var _profileController = __webpack_require__(17);
 
 	var _profileController2 = _interopRequireDefault(_profileController);
 
+<<<<<<< HEAD
+=======
+	var _profileCreationController = __webpack_require__(21);
+
+	var _profileCreationController2 = _interopRequireDefault(_profileCreationController);
+
+	var _vuex = __webpack_require__(18);
+
+	var _vuex2 = _interopRequireDefault(_vuex);
+
+>>>>>>> suggestion added in sudo code in profControl
+>>>>>>> working
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_vue2.default.use(_vueResource2.default);
 	_vue2.default.use(_vueRouter2.default);
+<<<<<<< HEAD
+
+	var store = new Vuex.Store({
+=======
+	_vue2.default.use(_vuex2.default);
+
+	var store = new _vuex2.default.Store({
+>>>>>>> suggestion added in sudo code in profControl
+	  state: {
+	    username: ''
+	  },
+	  getters: {
+	    isUsername: function isUsername(state) {
+	      return state.username;
+	    }
+	  },
+	  mutation: {
+	    set_Name: function set_Name(state, name) {
+	      state.username = name;
+	    }
+	  },
+	  action: {
+	    setName: function setName(_ref, name) {
+	      var commit = _ref.commit;
+
+	      commit(set_Name, name);
+	    }
+	  }
+	});
 
 	_vue2.default.component('login', _loginController2.default);
 
@@ -94,10 +140,27 @@
 	}, {
 	  path: '/signup',
 	  component: _signupController2.default
+<<<<<<< HEAD
 	}, {
 	  path: '/profile',
 	  component: _profileController2.default,
 	  name: 'profile'
+=======
+<<<<<<< HEAD
+=======
+	}, {
+	  path: '/profile/:id',
+	  component: _profileController2.default,
+	  name: 'profile'
+<<<<<<< HEAD
+>>>>>>> suggestion added in sudo code in profControl
+=======
+	}, {
+	  path: '/profileCreate/:id',
+	  component: _profileCreationController2.default,
+	  name: _profileCreationController2.default
+>>>>>>> working on updating user info in database
+>>>>>>> working
 	}];
 
 	var router = new _vueRouter2.default({
@@ -105,7 +168,12 @@
 	});
 
 	var app = new _vue2.default({
+<<<<<<< HEAD
 	  router: router
+=======
+	  router: router,
+	  store: store
+>>>>>>> suggestion added in sudo code in profControl
 	}).$mount('.app');
 
 /***/ },
@@ -12164,9 +12232,83 @@
 	module.exports = "\n<div class=\"message\">{{ msg }}</div>\n";
 
 /***/ },
+<<<<<<< HEAD
 /* 8 */,
 /* 9 */,
 /* 10 */,
+=======
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _loginTemplate = __webpack_require__(9);
+
+	var _loginTemplate2 = _interopRequireDefault(_loginTemplate);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var login = {
+	  template: _loginTemplate2.default.template,
+	  data: function data() {
+	    return {
+	      username: '',
+	      password: ''
+	    };
+	  },
+
+	  methods: {
+	    login: function login() {
+	      var _this = this;
+
+	      this.$http.post('/auth/login', {
+	        username: this.username,
+	        password: this.password
+	      }).then(function (res) {
+	        _this.$router.push('/profile/' + res.body.username);
+	      }).catch(function (err) {
+	        return console.error(err);
+	      });
+	    }
+	  },
+	  name: 'login'
+	};
+
+	exports.default = login;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(10)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/loginTemplate.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	module.exports = " \n  <div>\n    <div class=\"form-group\">\n      <label class=\"sr-only\" for=\"exampleInputEmail2\">Email address</label>\n      <input type=\"text\" class=\"form-control\" id=\"exampleInputEmail2\" placeholder=\"username\" v-model=\"username\" required>\n    </div>\n    <div class=\"form-group\">\n      <label class=\"sr-only\" for=\"exampleInputPassword2\">Password</label>\n      <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword2\" placeholder=\"Password\" v-model=\"password\" required>\n                              <div class=\"help-block text-right\"><a href=\"\">Forget the password ?</a></div>\n    </div>\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-primary btn-block\" v-on:click.prevent=\"login\">Sign in</button>\n    </div>\n  </div>\n";
+
+/***/ },
+>>>>>>> working
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -12199,6 +12341,13 @@
 	  },
 	  methods: {
 	    makePhone: function makePhone(myNumber) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	      var that = this;
+=======
+>>>>>>> suggestion added in sudo code in profControl
+>>>>>>> working
 	      this.phone = window.phone = PHONE({
 	        number: myNumber, // listen on username line else Anonymous
 	        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
@@ -12209,7 +12358,15 @@
 	        console.log('connected with', session);
 	        console.log(this);
 	        console.log(this.video);
+<<<<<<< HEAD
 	        this.videoOut = session.video.outerHTML;
+=======
+<<<<<<< HEAD
+	        that.videoOut = session.video.outerHTML;
+=======
+	        this.videoOut = session.video.outerHTML;
+>>>>>>> suggestion added in sudo code in profControl
+>>>>>>> working
 	      };
 	      this.phone.ready(function () {
 	        console.log('phone ready');
@@ -12226,6 +12383,13 @@
 	      });
 	    },
 	    makeBroadcaster: function makeBroadcaster() {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	      var that = this;
+=======
+>>>>>>> suggestion added in sudo code in profControl
+>>>>>>> working
 	      this.phone = window.phone = PHONE({
 	        number: 'BROADCASTER', // listen on username line else Anonymous
 	        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
@@ -12236,7 +12400,15 @@
 	        console.log('connected with', session);
 	        console.log(this);
 	        console.log(this.video);
+<<<<<<< HEAD
 	        this.videoOut = session.video.outerHTML;
+=======
+<<<<<<< HEAD
+	        that.videoOut = session.video.outerHTML;
+=======
+	        this.videoOut = session.video.outerHTML;
+>>>>>>> suggestion added in sudo code in profControl
+>>>>>>> working
 	      };
 	      this.phone.ready(function () {
 	        console.log('phone ready');
@@ -12440,6 +12612,11 @@
 
 	module.exports = "\n\t<div class=\"container\">\n\n  \t<form class=\"well form-horizontal\" action=\" \" method=\"post\"  id=\"contact_form\">\n\t\t\t<legend>Sign Up!</legend>\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<label class=\"col-md-4 control-label\">Username</label>  \n\t\t\t\t<div class=\"col-md-4 inputGroupContainer\">\n\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>\n\t\t\t\t\t\t<input  name=\"username\" placeholder=\"Username\" class=\"form-control\"  type=\"text\" v-model=\"username\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<!-- Text input-->\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<label class=\"col-md-4 control-label\" >Password</label> \n\t\t\t\t<div class=\"col-md-4 inputGroupContainer\">\n\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t<span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>\n\t\t\t\t\t\t<input name=\"password\" placeholder=\"Password\" class=\"form-control\"  type=\"password\" v-model=\"password\">\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t\n\t\t\t<div class=\"form-group\">\n\t\t\t\t<label class=\"col-md-4 control-label\"></label>\n\t\t\t\t<div class=\"col-md-4\">\n\t\t\t\t\t<button type=\"submit\" class=\"btn btn-warning\" v-on:click.prevent='signup'>Join! <span class=\"glyphicon glyphicon-send\"></span></button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n";
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> working
 /***/ },
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
@@ -12450,7 +12627,11 @@
 	  value: true
 	});
 
+<<<<<<< HEAD
 	var _profileTemplate = __webpack_require__(18);
+=======
+	var _profileTemplate = __webpack_require__(19);
+>>>>>>> working
 
 	var _profileTemplate2 = _interopRequireDefault(_profileTemplate);
 
@@ -12459,6 +12640,7 @@
 	var profile = {
 	  name: 'profile',
 	  template: _profileTemplate2.default.template,
+<<<<<<< HEAD
 	  props: {
 	    username: String
 	  },
@@ -12485,13 +12667,49 @@
 	      this.$http.get('/api/user', { params: { username: '2' } }).then(function (res) {
 	        if (!res.body.name) {
 	          console.log(_this.username);
+=======
+	  data: function data() {
+	    return {
+	      username: this.$route.params.id,
+	      name: '',
+	      age: '',
+	      gender: '',
+	      location: '',
+	      profileImg: 'profile_img_here',
+	      userinfo: ''
+	    };
+	  },
+	  methods: {
+	    loadUserProfile: function loadUserProfile() {
+	      var _this = this;
+
+	      console.log('before page loaded ', this.$route.params.id);
+	      this.$http.get('/api/user', { params: { username: this.$route.params.id } }).then(function (res) {
+	        var user = res.body;
+	        if (user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo) {
+	          _this.name = user.name;
+	          _this.age = user.age;
+	          _this.location = user.location;
+	          _this.gender = user.gender;
+	          _this.profileImg = user.profileImg;
+	          _this.userinfo = user.userinfo;
+>>>>>>> working
 	        }
 	      }).catch(function (err) {
 	        return console.error(err);
 	      });
+<<<<<<< HEAD
 	    }
 	  },
 	  mounted: function mounted() {
+=======
+	    },
+	    update: function update() {
+	      this.$router.push('/profileCreate/' + this.username);
+	    }
+	  },
+	  created: function created() {
+>>>>>>> working
 	    this.loadUserProfile();
 	  }
 	};
@@ -12502,8 +12720,546 @@
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 	var __vue_script__, __vue_template__
 	__vue_template__ = __webpack_require__(19)
+=======
+	/**
+	 * vuex v2.0.0
+	 * (c) 2016 Evan You
+	 * @license MIT
+	 */
+	(function (global, factory) {
+	   true ? module.exports = factory() :
+	  typeof define === 'function' && define.amd ? define(factory) :
+	  (global.Vuex = factory());
+	}(this, (function () { 'use strict';
+
+	var devtoolHook =
+	  typeof window !== 'undefined' &&
+	  window.__VUE_DEVTOOLS_GLOBAL_HOOK__
+
+	function devtoolPlugin (store) {
+	  if (!devtoolHook) { return }
+
+	  store._devtoolHook = devtoolHook
+
+	  devtoolHook.emit('vuex:init', store)
+
+	  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+	    store.replaceState(targetState)
+	  })
+
+	  store.subscribe(function (mutation, state) {
+	    devtoolHook.emit('vuex:mutation', mutation, state)
+	  })
+	}
+
+	function applyMixin (Vue) {
+	  var version = Number(Vue.version.split('.')[0])
+
+	  if (version >= 2) {
+	    var usesInit = Vue.config._lifecycleHooks.indexOf('init') > -1
+	    Vue.mixin(usesInit ? { init: vuexInit } : { beforeCreate: vuexInit })
+	  } else {
+	    // override init and inject vuex init procedure
+	    // for 1.x backwards compatibility.
+	    var _init = Vue.prototype._init
+	    Vue.prototype._init = function (options) {
+	      if ( options === void 0 ) options = {};
+
+	      options.init = options.init
+	        ? [vuexInit].concat(options.init)
+	        : vuexInit
+	      _init.call(this, options)
+	    }
+	  }
+
+	  /**
+	   * Vuex init hook, injected into each instances init hooks list.
+	   */
+
+	  function vuexInit () {
+	    var options = this.$options
+	    // store injection
+	    if (options.store) {
+	      this.$store = options.store
+	    } else if (options.parent && options.parent.$store) {
+	      this.$store = options.parent.$store
+	    }
+	  }
+	}
+
+	function mapState (states) {
+	  var res = {}
+	  normalizeMap(states).forEach(function (ref) {
+	    var key = ref.key;
+	    var val = ref.val;
+
+	    res[key] = function mappedState () {
+	      return typeof val === 'function'
+	        ? val.call(this, this.$store.state, this.$store.getters)
+	        : this.$store.state[val]
+	    }
+	  })
+	  return res
+	}
+
+	function mapMutations (mutations) {
+	  var res = {}
+	  normalizeMap(mutations).forEach(function (ref) {
+	    var key = ref.key;
+	    var val = ref.val;
+
+	    res[key] = function mappedMutation () {
+	      var args = [], len = arguments.length;
+	      while ( len-- ) args[ len ] = arguments[ len ];
+
+	      return this.$store.commit.apply(this.$store, [val].concat(args))
+	    }
+	  })
+	  return res
+	}
+
+	function mapGetters (getters) {
+	  var res = {}
+	  normalizeMap(getters).forEach(function (ref) {
+	    var key = ref.key;
+	    var val = ref.val;
+
+	    res[key] = function mappedGetter () {
+	      if (!(val in this.$store.getters)) {
+	        console.error(("[vuex] unknown getter: " + val))
+	      }
+	      return this.$store.getters[val]
+	    }
+	  })
+	  return res
+	}
+
+	function mapActions (actions) {
+	  var res = {}
+	  normalizeMap(actions).forEach(function (ref) {
+	    var key = ref.key;
+	    var val = ref.val;
+
+	    res[key] = function mappedAction () {
+	      var args = [], len = arguments.length;
+	      while ( len-- ) args[ len ] = arguments[ len ];
+
+	      return this.$store.dispatch.apply(this.$store, [val].concat(args))
+	    }
+	  })
+	  return res
+	}
+
+	function normalizeMap (map) {
+	  return Array.isArray(map)
+	    ? map.map(function (key) { return ({ key: key, val: key }); })
+	    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+	}
+
+	function isObject (obj) {
+	  return obj !== null && typeof obj === 'object'
+	}
+
+	function isPromise (val) {
+	  return val && typeof val.then === 'function'
+	}
+
+	function assert (condition, msg) {
+	  if (!condition) { throw new Error(("[vuex] " + msg)) }
+	}
+
+	var Vue // bind on install
+
+	var Store = function Store (options) {
+	  var this$1 = this;
+	  if ( options === void 0 ) options = {};
+
+	  assert(Vue, "must call Vue.use(Vuex) before creating a store instance.")
+	  assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.")
+
+	  var state = options.state; if ( state === void 0 ) state = {};
+	  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+	  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+	  // store internal state
+	  this._options = options
+	  this._committing = false
+	  this._actions = Object.create(null)
+	  this._mutations = Object.create(null)
+	  this._wrappedGetters = Object.create(null)
+	  this._runtimeModules = Object.create(null)
+	  this._subscribers = []
+	  this._watcherVM = new Vue()
+
+	    // bind commit and dispatch to self
+	  var store = this
+	  var ref = this;
+	  var dispatch = ref.dispatch;
+	  var commit = ref.commit;
+	  this.dispatch = function boundDispatch (type, payload) {
+	    return dispatch.call(store, type, payload)
+	    }
+	    this.commit = function boundCommit (type, payload, options) {
+	    return commit.call(store, type, payload, options)
+	  }
+
+	  // strict mode
+	  this.strict = strict
+
+	  // init root module.
+	  // this also recursively registers all sub-modules
+	  // and collects all module getters inside this._wrappedGetters
+	  installModule(this, state, [], options)
+
+	  // initialize the store vm, which is responsible for the reactivity
+	  // (also registers _wrappedGetters as computed properties)
+	  resetStoreVM(this, state)
+
+	  // apply plugins
+	  plugins.concat(devtoolPlugin).forEach(function (plugin) { return plugin(this$1); })
+	};
+
+	var prototypeAccessors = { state: {} };
+
+	prototypeAccessors.state.get = function () {
+	  return this._vm.state
+	};
+
+	prototypeAccessors.state.set = function (v) {
+	  assert(false, "Use store.replaceState() to explicit replace store state.")
+	};
+
+	Store.prototype.commit = function commit (type, payload, options) {
+	    var this$1 = this;
+
+	  // check object-style commit
+	  if (isObject(type) && type.type) {
+	    options = payload
+	    payload = type
+	    type = type.type
+	  }
+	  var mutation = { type: type, payload: payload }
+	  var entry = this._mutations[type]
+	  if (!entry) {
+	    console.error(("[vuex] unknown mutation type: " + type))
+	    return
+	  }
+	  this._withCommit(function () {
+	    entry.forEach(function commitIterator (handler) {
+	      handler(payload)
+	    })
+	  })
+	  if (!options || !options.silent) {
+	    this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); })
+	  }
+	};
+
+	Store.prototype.dispatch = function dispatch (type, payload) {
+	  // check object-style dispatch
+	  if (isObject(type) && type.type) {
+	    payload = type
+	    type = type.type
+	  }
+	  var entry = this._actions[type]
+	  if (!entry) {
+	    console.error(("[vuex] unknown action type: " + type))
+	    return
+	  }
+	  return entry.length > 1
+	    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+	    : entry[0](payload)
+	};
+
+	Store.prototype.subscribe = function subscribe (fn) {
+	  var subs = this._subscribers
+	  if (subs.indexOf(fn) < 0) {
+	    subs.push(fn)
+	  }
+	  return function () {
+	    var i = subs.indexOf(fn)
+	    if (i > -1) {
+	      subs.splice(i, 1)
+	    }
+	  }
+	};
+
+	Store.prototype.watch = function watch (getter, cb, options) {
+	    var this$1 = this;
+
+	  assert(typeof getter === 'function', "store.watch only accepts a function.")
+	  return this._watcherVM.$watch(function () { return getter(this$1.state); }, cb, options)
+	};
+
+	Store.prototype.replaceState = function replaceState (state) {
+	    var this$1 = this;
+
+	  this._withCommit(function () {
+	    this$1._vm.state = state
+	  })
+	};
+
+	Store.prototype.registerModule = function registerModule (path, module) {
+	  if (typeof path === 'string') { path = [path] }
+	  assert(Array.isArray(path), "module path must be a string or an Array.")
+	  this._runtimeModules[path.join('.')] = module
+	  installModule(this, this.state, path, module)
+	  // reset store to update getters...
+	  resetStoreVM(this, this.state)
+	};
+
+	Store.prototype.unregisterModule = function unregisterModule (path) {
+	    var this$1 = this;
+
+	  if (typeof path === 'string') { path = [path] }
+	  assert(Array.isArray(path), "module path must be a string or an Array.")
+	    delete this._runtimeModules[path.join('.')]
+	  this._withCommit(function () {
+	    var parentState = getNestedState(this$1.state, path.slice(0, -1))
+	    Vue.delete(parentState, path[path.length - 1])
+	  })
+	  resetStore(this)
+	};
+
+	Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+	  updateModule(this._options, newOptions)
+	  resetStore(this)
+	};
+
+	Store.prototype._withCommit = function _withCommit (fn) {
+	  var committing = this._committing
+	  this._committing = true
+	  fn()
+	  this._committing = committing
+	};
+
+	Object.defineProperties( Store.prototype, prototypeAccessors );
+
+	function updateModule (targetModule, newModule) {
+	  if (newModule.actions) {
+	    targetModule.actions = newModule.actions
+	  }
+	  if (newModule.mutations) {
+	    targetModule.mutations = newModule.mutations
+	  }
+	  if (newModule.getters) {
+	    targetModule.getters = newModule.getters
+	  }
+	  if (newModule.modules) {
+	    for (var key in newModule.modules) {
+	      if (!(targetModule.modules && targetModule.modules[key])) {
+	        console.warn(
+	          "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+	          'manual reload is needed'
+	        )
+	        return
+	      }
+	      updateModule(targetModule.modules[key], newModule.modules[key])
+	    }
+	  }
+	}
+
+	function resetStore (store) {
+	  store._actions = Object.create(null)
+	  store._mutations = Object.create(null)
+	  store._wrappedGetters = Object.create(null)
+	  var state = store.state
+	  // init root module
+	  installModule(store, state, [], store._options, true)
+	  // init all runtime modules
+	  Object.keys(store._runtimeModules).forEach(function (key) {
+	    installModule(store, state, key.split('.'), store._runtimeModules[key], true)
+	  })
+	  // reset vm
+	  resetStoreVM(store, state)
+	}
+
+	function resetStoreVM (store, state) {
+	  var oldVm = store._vm
+
+	  // bind store public getters
+	  store.getters = {}
+	  var wrappedGetters = store._wrappedGetters
+	  var computed = {}
+	  Object.keys(wrappedGetters).forEach(function (key) {
+	    var fn = wrappedGetters[key]
+	    // use computed to leverage its lazy-caching mechanism
+	    computed[key] = function () { return fn(store); }
+	    Object.defineProperty(store.getters, key, {
+	      get: function () { return store._vm[key]; }
+	    })
+	  })
+
+	  // use a Vue instance to store the state tree
+	  // suppress warnings just in case the user has added
+	  // some funky global mixins
+	  var silent = Vue.config.silent
+	  Vue.config.silent = true
+	  store._vm = new Vue({
+	    data: { state: state },
+	    computed: computed
+	  })
+	  Vue.config.silent = silent
+
+	  // enable strict mode for new vm
+	  if (store.strict) {
+	    enableStrictMode(store)
+	  }
+
+	  if (oldVm) {
+	    // dispatch changes in all subscribed watchers
+	    // to force getter re-evaluation.
+	    store._withCommit(function () {
+	      oldVm.state = null
+	    })
+	    Vue.nextTick(function () { return oldVm.$destroy(); })
+	  }
+	}
+
+	function installModule (store, rootState, path, module, hot) {
+	  var isRoot = !path.length
+	  var state = module.state;
+	  var actions = module.actions;
+	  var mutations = module.mutations;
+	  var getters = module.getters;
+	  var modules = module.modules;
+
+	  // set state
+	  if (!isRoot && !hot) {
+	    var parentState = getNestedState(rootState, path.slice(0, -1))
+	    var moduleName = path[path.length - 1]
+	    store._withCommit(function () {
+	      Vue.set(parentState, moduleName, state || {})
+	    })
+	  }
+
+	  if (mutations) {
+	    Object.keys(mutations).forEach(function (key) {
+	      registerMutation(store, key, mutations[key], path)
+	    })
+	  }
+
+	  if (actions) {
+	    Object.keys(actions).forEach(function (key) {
+	      registerAction(store, key, actions[key], path)
+	    })
+	  }
+
+	  if (getters) {
+	    wrapGetters(store, getters, path)
+	  }
+
+	  if (modules) {
+	    Object.keys(modules).forEach(function (key) {
+	      installModule(store, rootState, path.concat(key), modules[key], hot)
+	    })
+	  }
+	}
+
+	function registerMutation (store, type, handler, path) {
+	  if ( path === void 0 ) path = [];
+
+	  var entry = store._mutations[type] || (store._mutations[type] = [])
+	  entry.push(function wrappedMutationHandler (payload) {
+	    handler(getNestedState(store.state, path), payload)
+	  })
+	}
+
+	function registerAction (store, type, handler, path) {
+	  if ( path === void 0 ) path = [];
+
+	  var entry = store._actions[type] || (store._actions[type] = [])
+	  var dispatch = store.dispatch;
+	  var commit = store.commit;
+	  entry.push(function wrappedActionHandler (payload, cb) {
+	    var res = handler({
+	      dispatch: dispatch,
+	      commit: commit,
+	      getters: store.getters,
+	      state: getNestedState(store.state, path),
+	      rootState: store.state
+	    }, payload, cb)
+	    if (!isPromise(res)) {
+	      res = Promise.resolve(res)
+	    }
+	    if (store._devtoolHook) {
+	      return res.catch(function (err) {
+	        store._devtoolHook.emit('vuex:error', err)
+	        throw err
+	      })
+	    } else {
+	      return res
+	    }
+	  })
+	}
+
+	function wrapGetters (store, moduleGetters, modulePath) {
+	  Object.keys(moduleGetters).forEach(function (getterKey) {
+	    var rawGetter = moduleGetters[getterKey]
+	    if (store._wrappedGetters[getterKey]) {
+	      console.error(("[vuex] duplicate getter key: " + getterKey))
+	      return
+	    }
+	    store._wrappedGetters[getterKey] = function wrappedGetter (store) {
+	      return rawGetter(
+	        getNestedState(store.state, modulePath), // local state
+	        store.getters, // getters
+	        store.state // root state
+	      )
+	    }
+	  })
+	}
+
+	function enableStrictMode (store) {
+	  store._vm.$watch('state', function () {
+	    assert(store._committing, "Do not mutate vuex store state outside mutation handlers.")
+	  }, { deep: true, sync: true })
+	}
+
+	function getNestedState (state, path) {
+	  return path.length
+	    ? path.reduce(function (state, key) { return state[key]; }, state)
+	    : state
+	}
+
+	function install (_Vue) {
+	  if (Vue) {
+	    console.error(
+	      '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+	    )
+	    return
+	  }
+	  Vue = _Vue
+	  applyMixin(Vue)
+	}
+
+	// auto install in dist mode
+	if (typeof window !== 'undefined' && window.Vue) {
+	  install(window.Vue)
+	}
+
+	var index = {
+	  Store: Store,
+	  install: install,
+	  mapState: mapState,
+	  mapMutations: mapMutations,
+	  mapGetters: mapGetters,
+	  mapActions: mapActions
+	}
+
+	return index;
+
+	})));
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(20)
+>>>>>>> working
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -12520,6 +13276,7 @@
 	})()}
 
 /***/ },
+<<<<<<< HEAD
 /* 19 */
 /***/ function(module, exports) {
 
@@ -12535,6 +13292,18 @@
 /* 26 */,
 /* 27 */,
 /* 28 */
+=======
+/* 20 */
+/***/ function(module, exports) {
+
+	module.exports = "\n  <div>\n    <h1>{{$route.params.id}}</h1>\n      <div>\n        <div>\n          <div class='profileImg' v-html='profileImg'></div>\n        </div>\n\t\t<div>        \n\t\t  <span>Name :{{name}}</span>\n        </div>\n        <div>\n\t      <span>Gender: {{gender}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Age: {{age}}</span>\n\t    </div>\n\t    <div>\n\t      <span>Location: {{location}}</span>\n\t    </div>\n\t\t<div>\n\t      <span>Description: {{userinfo}}</span>\n\t    </div>\n\t</div>\n\t<button v-on:click='update'>Update User Info</button>\n\t<!--<div>*Place holder for matchs*</div>-->\n  </div>\n";
+
+<<<<<<< HEAD
+>>>>>>> suggestion added in sudo code in profControl
+=======
+/***/ },
+/* 21 */
+>>>>>>> working
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -12543,6 +13312,7 @@
 	  value: true
 	});
 
+<<<<<<< HEAD
 	var _loginTemplate = __webpack_require__(29);
 
 	var _loginTemplate2 = _interopRequireDefault(_loginTemplate);
@@ -12566,11 +13336,63 @@
 	        password: this.password
 	      }).then(function (res) {
 	        console.log(res);
+=======
+	var _profileCreationTemplate = __webpack_require__(22);
+
+	var _profileCreationTemplate2 = _interopRequireDefault(_profileCreationTemplate);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var profileCreation = {
+	  template: _profileCreationTemplate2.default.template,
+	  name: profileCreation,
+	  data: function data() {
+	    return {
+	      username: this.$route.params.id,
+	      name: '',
+	      age: '',
+	      gender: '',
+	      location: '',
+	      profileImg: '',
+	      userinfo: ''
+	    };
+	  },
+	  methods: {
+	    setUserInfo: function setUserInfo() {
+	      var body = {
+	        name: this.name,
+	        age: this.age,
+	        location: this.location,
+	        profileImg: this.profileImg,
+	        gender: this.gender,
+	        userinfo: this.userinfo
+	      };
+	      this.$http.post('/api/user', body).then(function (response) {
+	        console.log(response);
+	      }).catch(function (err) {});
+	    },
+	    loadUserProfile: function loadUserProfile() {
+	      var _this = this;
+
+	      console.log('before page loaded ', this.$route.params.id);
+	      this.$http.get('/api/user', { params: { username: this.$route.params.id } }).then(function (res) {
+	        var user = res.body;
+	        console.log(user);
+	        if (user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo) {
+	          _this.name = user.name;
+	          _this.age = user.age;
+	          _this.location = user.location;
+	          _this.gender = user.gender;
+	          _this.profileImg = user.profileImg;
+	          _this.userinfo = user.userinfo;
+	        }
+>>>>>>> working
 	      }).catch(function (err) {
 	        return console.error(err);
 	      });
 	    }
 	  },
+<<<<<<< HEAD
 	  name: 'login'
 	};
 
@@ -12582,6 +13404,21 @@
 
 	var __vue_script__, __vue_template__
 	__vue_template__ = __webpack_require__(30)
+=======
+	  created: function created() {
+	    this.loadUserProfile();
+	  }
+	};
+
+	exports.default = profileCreation;
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(23)
+>>>>>>> working
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -12589,7 +13426,11 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
+<<<<<<< HEAD
 	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/loginTemplate.vue"
+=======
+	  var id = "/Users/ericlau/Desktop/Do-We/online-speed-dating/App/Client/Views/profileCreationTemplate.vue"
+>>>>>>> working
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -12598,10 +13439,19 @@
 	})()}
 
 /***/ },
+<<<<<<< HEAD
 /* 30 */
 /***/ function(module, exports) {
 
 	module.exports = " \n  <div>\n    <div class=\"form-group\">\n      <label class=\"sr-only\" for=\"exampleInputEmail2\">Email address</label>\n      <input type=\"text\" class=\"form-control\" id=\"exampleInputEmail2\" placeholder=\"username\" v-model=\"username\" required>\n    </div>\n    <div class=\"form-group\">\n      <label class=\"sr-only\" for=\"exampleInputPassword2\">Password</label>\n      <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword2\" placeholder=\"Password\" v-model=\"password\" required>\n                              <div class=\"help-block text-right\"><a href=\"\">Forget the password ?</a></div>\n    </div>\n    <div class=\"form-group\">\n      <button type=\"submit\" class=\"btn btn-primary btn-block\" v-on:click.prevent=\"login\">Sign in</button>\n    </div>\n  </div>\n";
 
+=======
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "\n  <div>\n    <h1>Profile Update</h1>\n      <div>\n        <form>\n          <div>\n            <input name='name' placeholder='Enter name' type='text' v-model='name'>\n          </div>\n          <div>\n            <input name='age' placeholder='age' type='number' v-model='age'>\n          </div>\n          <div>\n            <input name='gender' placeholder='Gender' type='text' v-model='gender'>\n          </div>\n          <div>\n            <input name='location' placeholder='Where Are You?' type='text' v-model='location'>\n          </div>\n          <div>\n            <input name='profileImg' placeholder='Upload a photo' type='text' v-model='profileImg'>\n          </div>\n          <div>\n            <input name='userinfo' placeholder='Tell Us about yourself' type='text' v-model='userinfo'>\n          </div>       \n        </form> \n\t  <button v-on:click='setUserInfo'>Save User Info</button>\n    </div>\n  </div>\n";
+
+>>>>>>> working on updating user info in database
+>>>>>>> working
 /***/ }
 /******/ ]);

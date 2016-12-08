@@ -1,8 +1,8 @@
-import temp from './profileTemplate.vue';
+import temp from './profileCreationTemplate.vue';
 
-var profile = {
-  name: 'profile',
+var profileCreation = {
   template: temp.template,
+  name: profileCreation,
   data: function() {
     return {
       username: this.$route.params.id,
@@ -10,17 +10,35 @@ var profile = {
       age: '',
       gender: '',
       location: '',
-      profileImg: 'profile_img_here',
+      profileImg: '',
       userinfo: '',
-    };
+    }
   },
   methods: {
->>>>>>> working
+    setUserInfo: function() {
+      var body = {
+        name: this.name,
+        age: this.age,
+        location: this.location,
+        profileImg: this.profileImg,
+        gender: this.gender,
+        userinfo: this.userinfo
+      };
+      this.$http.post('/api/user', body)
+      .then((response) => {
+          console.log(response)
+
+      })
+      .catch((err) => {
+
+      });
+    },
     loadUserProfile: function() {
       console.log('before page loaded ', this.$route.params.id);
       this.$http.get('/api/user', {params: {username: this.$route.params.id }})
       .then((res) => {
         var user = res.body;
+        console.log(user)
           if(user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo){
             this.name = user.name;
             this.age = user.age;
@@ -31,14 +49,11 @@ var profile = {
           } 
         })
       .catch((err) => console.error(err));
-    },
-    update: function() {
-      this.$router.push('/profileCreate/' + this.username)
-    }	
+    }
   },
   created: function() {
-    this.loadUserProfile();
+      this.loadUserProfile();
   }
 };
 
-export default profile;
+export default profileCreation;

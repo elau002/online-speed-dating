@@ -43,5 +43,3 @@ exports.getUser = function (req, res) {
   });
 };
 
-
- 
