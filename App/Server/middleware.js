@@ -1,15 +1,54 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var path = require('path');
+var passport = require('passport');
+var session = require('express-session');
+var LocalStrategy = require('passport-local').Strategy;
+var facebookStrategy = require('passport-facebook').Strategy;
 
+var userHandler = require('./handlers/userHandler.js');
+var User = require('../Database/models/userModel.js');
 
-//use morgan to log server requests
-//use bodyParser to parse json attached to requests
-//serve static from client folder
+var sessionOptions = { 
+  secret: 'keyboard cat',
+  saveUninitialized: true,
+  resave: false
+};
 
 module.exports = function(app, express) { 
-  app.use(morgan('dev'));
-  app.use(bodyParser.json());
   app.use('/', express.static(path.join(__dirname, '../Client')));
   app.use('/dist', express.static(path.join(__dirname, '../../Compiled/transpiled')));
+  app.use(morgan('dev'));
+  app.use(bodyParser.json());
+  app.use(session(sessionOptions));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+
+  passport.serializeUser(function(user, done) {
+    done(null, user._id);
+  });
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function (err, user) {
+      done(err, user);
+    });
+  }); 
+  passport.use(new LocalStrategy(
+    function(username, password, done) {
+      userHandler.getUserDB(username, function(err, user) {
+        if (err) { return done(err); }
+        if (!user) {
+          console.log('failed username');
+          return done(null, false, { message: 'Incorrect username.' });
+        }
+        if (password !== user.password) {
+          console.log('failed password');
+          return done(null, false, { message: 'Incorrect password.' });
+        } 
+        console.log('success');
+        return done(null, user);
+      }); 
+    }
+  )); 
 };
+

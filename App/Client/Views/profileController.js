@@ -3,11 +3,10 @@ import temp from './profileTemplate.vue';
 var profile = {
   name: 'profile',
   template: temp.template,
-  props: {
-    username: String
-  },
   data: function() {
     return {
+      username: this.$route.params.id,
+
       name: '',
       age: '',
       location: ''
@@ -29,17 +28,17 @@ var profile = {
       });
     },
     loadUserProfile: function() {
-      console.log('before page loaded ', this.props);
-      this.$http.get('/api/user', {params: {username: '2'}})
+      console.log('before page loaded ', this.$route.params.id);
+      this.$http.get('/api/user', {params: {username: this.$route.params.id }})
       .then((res) => {
-        if (!res.body.name) {
-          console.log(this.username)
+          console.log(res);
         }
       })
       .catch((err) => console.error(err));
     }	
   },
-  mounted: function() {
+  created: function() {
+    console.log(this.$route.params.id);
     this.loadUserProfile();
   }
 };

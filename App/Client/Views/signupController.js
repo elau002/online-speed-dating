@@ -17,7 +17,7 @@ var signup = {
 
       this.$http.post('/api/user', body)
       .then((response) => {
-        this.$router.push('/signin');
+        this.$router.push('/');
       })
       .catch((err) => {
         alert('username already exists');

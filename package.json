@@ -4,8 +4,9 @@
   "description": "Online Speed Dating App",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon App/Server/server.js",
-    "test": "mocha"
+    "start": "node App/Server/server.js",
+    "test": "mocha",
+    "dev": "nodemon App/Server/server.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.2.2",
@@ -44,6 +46,9 @@
     "mongoose": "^4.7.1",
     "morgan": "^1.7.0",
     "npm": "^4.0.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "promise": "^7.1.1",
     "q": "^1.4.1",
@@ -55,6 +60,7 @@
     "vue-loader": "^7.5.3",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.1.1",
+    "vuex": "^2.0.0",
     "webpack": "^1.13.3",
     "webpack-stream": "^3.2.0",
     "webpack-uglify-js-plugin": "^1.1.9",

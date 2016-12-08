@@ -1,5 +1,5 @@
 var webpackUglifyJsPlugin = require('webpack-uglify-js-plugin');
-var path = require('path') 
+var path = require('path'); 
 
 
 

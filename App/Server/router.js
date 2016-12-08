@@ -6,6 +6,4 @@ var router = require('express').Router();
 router.use('/api', apiRouter);
 router.use('/auth', authRouter);
 
-//need to handle other routes/errors
-
 module.exports = router; 
