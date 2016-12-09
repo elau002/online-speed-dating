@@ -2,7 +2,7 @@
   <div>
     <h1>Profile Update</h1>
       <div>
-        <form>
+        <form class='profile-form'>
           <div>
             <input name='name' placeholder='Enter name' type='text' v-model='name'>
           </div>
@@ -19,7 +19,7 @@
             <input name='profileImg' placeholder='Upload a photo' type='text' v-model='profileImg'>
           </div>
           <div>
-            <input name='userinfo' placeholder='Tell Us about yourself' type='text' v-model='userinfo'>
+            <input maxlength='200' name='userinfo' placeholder='Tell Us about yourself' type='text' v-model='userinfo'>
           </div>       
         </form> 
 	  <button v-on:click='setUserInfo'>Save User Info</button>

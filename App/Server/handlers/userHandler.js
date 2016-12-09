@@ -18,12 +18,10 @@ exports.createUserDB = function(user, cb) {
 }; 
 
 exports.signUpUser = function (req, res) {
-  console.log('called signUpUser in handler');
   var username = req.body.username;
   var password = req.body.password;
 
   exports.getUserDB(username, function(err, user) {
-    console.log('user.getUser returned with ', user);
     if (err) { console.error(err); }
     if (!user) {
       exports.createUserDB({username: username, password: password}, function(err, user) {
@@ -36,7 +34,6 @@ exports.signUpUser = function (req, res) {
 };
 
 exports.getUser = function (req, res) {
-  console.log('called getUser in handler');
   exports.getUserDB(req.query.username, function(err, user) {
     if (err) { console.error(err); }
     res.status(200).send(user);

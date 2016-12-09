@@ -4,7 +4,7 @@ var app = {
   template: temp.template,
   data: function() {
     return { 
-      msg: 'Hello from vue-loader!'
+      msg: 'Welcome To Do-We! ' + this.$store.state.username
     };
   }
 };

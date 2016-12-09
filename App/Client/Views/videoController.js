@@ -1,6 +1,7 @@
 
 import template from './videoTemplate.vue';
 import Vue from 'vue'; 
+import { mapState } from 'vuex';
 
 var video = {
   template: template.template,
@@ -13,25 +14,31 @@ var video = {
       myNumber: 0
     };
   },
+  computed: mapState(['videoOut', 'sessionOut', 'username', 'name', 'phone', 'sessionIn']),
   methods: {
     makePhone: function(myNumber) {
-      this.phone = window.phone = PHONE({
+      console.log(this.$store.state.phone);
+      this.$store.state.phone = window.phone = PHONE({
         number: myNumber, // listen on username line else Anonymous
         publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
         subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Your Sub Key
         ssl: true 
       });
       var sessionConnected = function(session) {
+        this.$store.state.videoOut = session;
+        console.log(session);
         console.log('connected with', session);
         console.log(this);
         console.log(this.video);
-        this.videoOut = session.video.outerHTML;
+        this.$store.state.videoOut = session.video.outerHTML;
       };
       this.phone.ready(function() {
         console.log('phone ready');
       });
       this.phone.receive(function(session) {
         console.log( 'i receieved');
+        this.$store.state.videoIn = session;
+        console.log(session);
 
         // session.message(message);
         // session.thumbnail(thumbnail);
