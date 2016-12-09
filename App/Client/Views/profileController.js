@@ -16,16 +16,12 @@ var profile = {
       verified: false
     };
   },
-<<<<<<< HEAD
-  computed: mapState(['username', 'name', 'age', 'location']),
-=======
   created () {
     this.loadUserProfile();
   },
   watch: {
     '$route': 'loadUserProfile'
   },
->>>>>>> new
   methods: {
     setProfileInfo: function(res) {
       for (var key in res) {
@@ -48,16 +44,14 @@ var profile = {
           }
         });
       } else {
-        this.verified = true; 
-       console.log(this.verified)
-       console.log(this.$store.getters.getProfileInfo)
+        this.verified = true;
         this.setProfileInfo(this.$store.getters.getProfileInfo); 
       } 
     },
     update: function() {
       this.$router.push('/profileCreate/' + this.username);
     }	
-  },
+  }
 };
 
 export default profile;
